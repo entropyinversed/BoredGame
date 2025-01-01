@@ -1,0 +1,15 @@
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\bin\Debug\net8.0\BoredGame.exe
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\bin\Debug\net8.0\BoredGame.deps.json
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\bin\Debug\net8.0\BoredGame.runtimeconfig.json
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\bin\Debug\net8.0\BoredGame.dll
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\bin\Debug\net8.0\BoredGame.pdb
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.AssemblyInfoInputs.cache
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.AssemblyInfo.cs
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.csproj.CoreCompileInputs.cache
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.sourcelink.json
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.dll
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\refint\BoredGame.dll
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.pdb
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\BoredGame.genruntimeconfig.cache
+C:\Users\tyler\Documents\Repos\BoredGame\BoredGame\obj\Debug\net8.0\ref\BoredGame.dll
