@@ -19,6 +19,6 @@ class Program
             Thread.Sleep(5000);
         }
         
-        Console.WriteLine("game over");
+        Console.WriteLine("game over test");
     }
 }
