@@ -1,33 +1,25 @@
 ﻿using BoredGame.Boards;
 using BoredGame.Rules;
 
-namespace BoredGame;
+namespace BoredGame.Games;
 
-public class TicTacToeGame : IGame
+public class TicTacToeGame(IBoard board, IRules rules) : IGame
 {
-    private readonly IBoard _board;
-    private readonly IRules _rules;
     private bool _isGameOver;
-
-    public TicTacToeGame(IBoard board, IRules rules)
-    {
-        _board = board;
-        _rules = rules;
-    }
-
+    
     public void Start()
     {
-        _board.Setup();
+        board.Setup();
         _isGameOver = false;
     }
 
     public void PlayTurn()
     {
         Console.WriteLine("play turn");
-        _rules.ApplyRules(_board);
+        rules.ApplyRules(board);
     }
     
     public bool IsGameOver() => _isGameOver;
 
-    public void DisplayBoard() => _board.Display();
+    public void DisplayBoard() => board.Display();
 }

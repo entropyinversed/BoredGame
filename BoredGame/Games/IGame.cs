@@ -1,4 +1,4 @@
-﻿namespace BoredGame;
+﻿namespace BoredGame.Games;
 
 public interface IGame
 {

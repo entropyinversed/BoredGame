@@ -1,5 +1,5 @@
-using System.Diagnostics;
 using BoredGame.Boards;
+using BoredGame.Games;
 using BoredGame.Rules;
 
 namespace BoredGame;
