@@ -20,7 +20,8 @@ class Program
         }
         
         Console.WriteLine("game over test");
-	Console.WriteLine("for git push");
-	Console.WriteLine("and another one");
+	    Console.WriteLine("for git push");
+	    Console.WriteLine("and another one");
+        Console.WriteLine("linux push test");
     }
 }
