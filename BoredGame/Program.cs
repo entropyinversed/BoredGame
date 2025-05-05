@@ -1,27 +1,40 @@
 ﻿namespace BoredGame;
 
-class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main()
     {
-        // TODO: ArgumentOutOfRange Exception isn't being thrown...
-        Console.WriteLine("Choose game: [TicTacToe]");
-        string input = Console.ReadLine();
-        GameType gameType = Enum.Parse<GameType>(input);
-        
-        IGame game = GameFactory.CreateGame(gameType);
+        var gameType = PromptForGameType();
+        var game = GameFactory.CreateGame(gameType);
         game.Start();
         game.DisplayBoard();
 
         while (!game.IsGameOver())
         {
-            Console.WriteLine("playing game");
+            Console.WriteLine("PLACEHOLDER");
             Thread.Sleep(5000);
+            game.IsGameOver();
         }
-        
-        Console.WriteLine("game over test");
-	    Console.WriteLine("for git push");
-	    Console.WriteLine("and another one");
-        Console.WriteLine("linux push test");
+    }
+
+    private static GameType PromptForGameType()
+    {
+        while (true)
+        {
+            Console.WriteLine(
+                "Choose a Game: [" + string.Join(", ", Enum.GetNames<GameType>()) + "]"
+            );
+            
+            var input = Console.ReadLine();
+            
+            if (!string.IsNullOrWhiteSpace(input)
+                && Enum.TryParse<GameType>(input.Trim(), ignoreCase: true, out var gameType)
+                && Enum.IsDefined(typeof(GameType), gameType))
+            {
+                return gameType;
+            }
+            
+            Console.WriteLine($"Sorry, \"{input}\" is not a valid game type.");
+        }
     }
 }
