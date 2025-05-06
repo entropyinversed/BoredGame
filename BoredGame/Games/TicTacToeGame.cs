@@ -6,6 +6,7 @@ namespace BoredGame.Games;
 public class TicTacToeGame(IBoard board, IRules rules) : IGame
 {
     private bool _isGameOver;
+    private char _currentMark = '0';
     
     public void Start()
     {
@@ -15,8 +16,25 @@ public class TicTacToeGame(IBoard board, IRules rules) : IGame
 
     public void PlayTurn()
     {
-        Console.WriteLine("play turn");
+        while (true)
+        {
+            Console.Write($"Player {_currentMark}, enter row and column (1-3, 1-3): ");
+            var parts = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts?.Length == 2 &&
+                int.TryParse(parts[0], out var row) &&
+                int.TryParse(parts[1], out var col) &&
+                (board as TicTacToeBoard)?.TryPlaceMark(row - 1, col - 1, _currentMark) == true)
+            {
+                break;
+            }
+            
+            Console.WriteLine("Invalid move, please try again.");
+        }
+        
         rules.ApplyRules(board);
+        _isGameOver = rules.IsGameOver();
+        _currentMark = _currentMark == 'X' ? '0' : 'X';
     }
     
     public bool IsGameOver() => _isGameOver;

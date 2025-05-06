@@ -11,9 +11,8 @@ internal static class Program
 
         while (!game.IsGameOver())
         {
-            Console.WriteLine("PLACEHOLDER");
-            Thread.Sleep(5000);
-            game.IsGameOver();
+            game.PlayTurn();
+            game.DisplayBoard();
         }
     }
 
