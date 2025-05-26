@@ -23,7 +23,7 @@ public class TicTacToeBoard : IBoard
         {
             for (var col = 0; col < 3; col++)
             {
-                Console.Write(" _ ");
+                Console.Write($" {_cells[row, col]} ");
             }
             Console.WriteLine();
         }
