@@ -18,13 +18,13 @@ public class TicTacToeGame(IBoard board, IRules rules) : IGame
     {
         while (true)
         {
-            Console.Write($"Player {_currentMark}, enter row and column (1-3, 1-3): ");
+            Console.Write($"Player {_currentMark}, enter row and column (0-2, 0-2): ");
             var parts = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             if (parts?.Length == 2 &&
                 int.TryParse(parts[0], out var row) &&
                 int.TryParse(parts[1], out var col) &&
-                (board as TicTacToeBoard)?.TryPlaceMark(row - 1, col - 1, _currentMark) == true)
+                (board as TicTacToeBoard)?.TryPlaceMark(row, col, _currentMark) == true)
             {
                 break;
             }
