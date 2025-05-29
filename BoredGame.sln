@@ -1,8 +1,8 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoredGameV1", "BoredGameV1\BoredGameV1.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGameV1", "BoredGameV1\BoredGameV1.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoredGameV2", "BoredGameV2\BoredGameV2.csproj", "{5CC55EB5-B856-46F2-91E3-0A37E617F186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGameV2", "BoredGameV2\BoredGameV2.csproj", "{5CC55EB5-B856-46F2-91E3-0A37E617F186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

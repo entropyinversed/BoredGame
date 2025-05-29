@@ -34,8 +34,6 @@ internal static class Program
             }
             
             Console.WriteLine($"Sorry, \"{input}\" is not a valid game type.");
-            
-            // Just a test Apple commit!
         }
     }
 }
