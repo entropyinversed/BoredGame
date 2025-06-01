@@ -3,9 +3,8 @@ namespace BoredGame.Boards;
 public class TicTacToeBoard : IBoard
 {
     private const byte SquareBoardLength = 3;
-    
-    private readonly char[,] _cells = new char[SquareBoardLength, SquareBoardLength];
-    public char[,] Cells => _cells;
+    private const char Empty = '_';
+    public char[,] Cells { get; } = new char[SquareBoardLength, SquareBoardLength];
 
     public void Setup()
     {
@@ -13,7 +12,7 @@ public class TicTacToeBoard : IBoard
         {
             for (var col = 0; col < SquareBoardLength; col++)
             {
-                _cells[row, col] = '_';
+                Cells[row, col] = Empty;
             } 
         }
     }
@@ -28,7 +27,7 @@ public class TicTacToeBoard : IBoard
         {
             for (var col = 0; col < SquareBoardLength; col++)
             {
-                Console.Write($" {_cells[row, col]} ");
+                Console.Write($" {Cells[row, col]} ");
             }
             Console.WriteLine();
         }
@@ -39,13 +38,27 @@ public class TicTacToeBoard : IBoard
 
     public bool TryPlaceMark(int row, int col, char mark)
     {
-        // TODO: Make more readable
+        if (row is < 0 or > 2 || col is < 0 or > 2)
+        {
+            return false;
+        }
+
+        if (Cells[row, col] is not Empty)
+        {
+            return false;
+        }
         
-        if (row is < 0 or > 2 || col is < 0 or > 2) return false;
-        if (_cells[row, col] != '_') return false;
-        _cells[row, col] = mark;
+        Cells[row, col] = mark;
+        
         return true;
     }
     
-    public bool IsFull() => _cells.Cast<char>().All(c => c != '_');
+    public bool IsFull()
+    {
+        var allCells = Cells.Cast<char>();
+        
+        var noEmpty = allCells.All(c => c is not Empty);
+
+        return noEmpty;
+    }
 }
