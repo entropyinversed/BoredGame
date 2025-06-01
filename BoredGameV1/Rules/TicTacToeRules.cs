@@ -4,6 +4,7 @@ namespace BoredGame.Rules;
 
 public class TicTacToeRules : IRules
 {
+    private const char Empty = '_';
     private static readonly (int row, int col)[][] AllWinLines =
     [
         [(0, 0), (0, 1), (0, 2)], // Row 0
@@ -32,19 +33,19 @@ public class TicTacToeRules : IRules
         
         foreach (var line in AllWinLines)
         {
-            var first = boardCells[line[0].row, line[0].col];
-            if (first == '_')
+            var firstCellValue = boardCells[line[0].row, line[0].col];
+            if (firstCellValue == Empty)
             {
                 continue;
             }
 
-            if (boardCells[line[1].row, line[1].col] != first ||
-                boardCells[line[2].row, line[2].col] != first)
+            if (boardCells[line[1].row, line[1].col] != firstCellValue ||
+                boardCells[line[2].row, line[2].col] != firstCellValue)
             {
                 continue;
             }
 
-            _winner = first;
+            _winner = firstCellValue;
             _gameOver = true;
             return;
         }
@@ -58,14 +59,10 @@ public class TicTacToeRules : IRules
             return false;
         }
         
-        if (_winner == null)               
-        {
-            Console.WriteLine("It's a tie");
-        }
-        else                              
-        {
-            Console.WriteLine("Player " + _winner + " won!");
-        }
+        var resultMessage = _winner == null ? 
+            "It's a tie" : $"Player {_winner} won!";
+
+        Console.WriteLine(resultMessage);
         
         return true;
     }
