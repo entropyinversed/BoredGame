@@ -6,7 +6,8 @@ namespace BoredGame;
 
 public enum GameType
 {
-    TicTacToe
+    TicTacToe,
+    ConnectFour
 }
 
 public static class GameFactory
@@ -16,6 +17,7 @@ public static class GameFactory
         return gameType switch
         {
             GameType.TicTacToe => new TicTacToeGame(new TicTacToeBoard(), new TicTacToeRules()),
+            GameType.ConnectFour => new ConnectFourGame(new ConnectFourBoard(), new ConnectFourRules()),
             _ => throw new ArgumentOutOfRangeException(nameof(gameType), "Unsupported game type.")
         };
     }
