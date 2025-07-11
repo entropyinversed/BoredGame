@@ -11,6 +11,7 @@ public class ConnectFourGame(IBoard board, IRules rules) : IGame
     public void Start()
     {
         board.Setup();
+        _isGameOver = false;
     }
 
     public void PlayTurn()
@@ -29,11 +30,11 @@ public class ConnectFourGame(IBoard board, IRules rules) : IGame
             }
             
             Console.WriteLine("Invalid move, please try again.");
-            
-            rules.ApplyRules(board);
-            _isGameOver = rules.IsGameOver();
-            _currentMark = _currentMark == 'X' ? '0' : 'X';
         }
+        
+        rules.ApplyRules(board);
+        _isGameOver = rules.IsGameOver();
+        _currentMark = _currentMark == 'X' ? '0' : 'X';
     }
 
     public bool IsGameOver() => _isGameOver;

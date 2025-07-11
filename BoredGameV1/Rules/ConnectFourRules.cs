@@ -15,11 +15,34 @@ public class ConnectFourRules : IRules
         }
 
         var boardCells = connectFourBoard.Cells;
-        
-        // TODO: Something
-        
-        _gameOver = true;
-        return;
+        const int boardSize = 4;
+        const char empty = '_';
+
+        for (int i = 0; i < boardSize; i++)
+        {
+            // Row
+            if (boardCells[i, 0] != empty &&
+                boardCells[i, 0] == boardCells[i, 1] &&
+                boardCells[i, 1] == boardCells[i, 2] &&
+                boardCells[i, 2] == boardCells[i, 3])
+            {
+                _winner = boardCells[i, 0];
+                _gameOver = true;
+                return;
+            }
+            
+            // Col
+            if (boardCells[0, i] != empty &&
+               boardCells[0, i] == boardCells[1, i] &&
+               boardCells[1, i] == boardCells[2, i] &&
+               boardCells[2, i] == boardCells[3, i])
+            {
+                _winner = boardCells[0, i];
+                _gameOver = true;
+                return;
+            }
+        }
+        _gameOver = connectFourBoard.IsFull();
     }
 
     public bool IsGameOver()
