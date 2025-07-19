@@ -1,8 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGameV1", "BoredGameV1\BoredGameV1.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGameV2", "BoredGameV2\BoredGameV2.csproj", "{5CC55EB5-B856-46F2-91E3-0A37E617F186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGame", "BoredGame\BoredGame.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +12,5 @@ Global
 		{008C8997-B585-4B7D-B6CD-3F42BF2C4490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008C8997-B585-4B7D-B6CD-3F42BF2C4490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{008C8997-B585-4B7D-B6CD-3F42BF2C4490}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CC55EB5-B856-46F2-91E3-0A37E617F186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CC55EB5-B856-46F2-91E3-0A37E617F186}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CC55EB5-B856-46F2-91E3-0A37E617F186}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CC55EB5-B856-46F2-91E3-0A37E617F186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
