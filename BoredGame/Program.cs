@@ -2,6 +2,7 @@
 
 internal static class Program
 {
+    // Quick GIT user check.
     private static void Main()
     {
         var gameType = PromptForGameType();
