@@ -3,7 +3,7 @@ using BoredGame.Rules;
 
 namespace BoredGame.Games;
 
-public class ConnectFourGame(IBoard board, IRules rules) : IGame
+public class ConnectFourGame(ConnectFourBoard board, ConnectFourRules rules) : IGame // Generics instead maybe?
 {
     private bool _isGameOver;
     private char _currentMark = '0';
@@ -24,7 +24,7 @@ public class ConnectFourGame(IBoard board, IRules rules) : IGame
             if (parts?.Length == 2 &&
                 int.TryParse(parts[0], out var row) &&
                 int.TryParse(parts[1], out var col) &&
-                (board as ConnectFourBoard)?.TryPlaceMark(row, col, _currentMark) == true)
+                board.TryPlaceMark(row, col, _currentMark))
             {
                 break;
             }
