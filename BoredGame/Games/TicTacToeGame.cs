@@ -16,21 +16,9 @@ public class TicTacToeGame(TicTacToeBoard board, TicTacToeRules rules) : IGame /
 
     public void PlayTurn()
     {
-        while (true)
-        {
-            Console.Write($"Player {_currentMark}, enter row and column (0-2, 0-2): ");
-            var parts = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var pieceRecord = InputManager.PlayTurn();
 
-            if (parts?.Length == 2 &&
-                int.TryParse(parts[0], out var row) &&
-                int.TryParse(parts[1], out var col) &&
-                board.TryPlaceMark(row, col, _currentMark))
-            {
-                break;
-            }
-            
-            Console.WriteLine("Invalid move, please try again.");
-        }
+        board.TryPlaceMark(pieceRecord.Row, pieceRecord.Col, _currentMark);
         
         rules.ApplyRules(board);
         _isGameOver = rules.IsGameOver();
