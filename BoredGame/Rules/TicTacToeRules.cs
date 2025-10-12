@@ -24,6 +24,8 @@ public class TicTacToeRules : IRules
 
     public void ApplyRules(IBoard board)
     {
+        Console.WriteLine("---Applying Rules TicTacToeRules---");
+        
         if (board is not TicTacToeBoard ticTacToeBoard)
         {
             return;
@@ -54,6 +56,8 @@ public class TicTacToeRules : IRules
 
     public bool IsGameOver()
     {
+        Console.WriteLine("Checking IsGameOver TicTacToe");
+
         if (!_gameOver)
         {
             return false;

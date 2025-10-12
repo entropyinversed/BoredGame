@@ -2,17 +2,19 @@
 
 internal static class Program
 {
-    // Quick GIT user check.
     private static void Main()
     {
-        var gameType = InputManager.PromptForGameType();
+        Console.WriteLine("---Starting Board Game---");
+	
+	    var gameType = InputManager.PromptForGameType();
         var game = GameFactory.CreateGame(gameType);
         game.Start();
         game.DisplayBoard();
 
         while (!game.IsGameOver())
         {
-            game.PlayTurn();
+            Console.WriteLine("Inside Game Loop");
+	        game.PlayTurn();
             game.DisplayBoard();
         }
     }

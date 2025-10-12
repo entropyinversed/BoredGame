@@ -10,12 +10,16 @@ public class ConnectFourGame(ConnectFourBoard board, ConnectFourRules rules) : I
 
     public void Start()
     {
+        Console.WriteLine("---Starting ConnectFourGame---");
+
         board.Setup();
         _isGameOver = false;
     }
 
     public void PlayTurn()
     {
+        Console.WriteLine("---PlayTurn ConnectFourGame---"); 
+
         var pieceRecord = InputManager.PlayTurn();
 
         board.TryPlaceMark(pieceRecord.Row, pieceRecord.Col, _currentMark);

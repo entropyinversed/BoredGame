@@ -6,6 +6,8 @@ public class InputManager
     
     public static PieceMove PlayTurn()
     {
+        Console.WriteLine("---Starting PlayTurn---");
+
         while (true)
         {
             var parts = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -23,6 +25,8 @@ public class InputManager
     
     public static GameType PromptForGameType()
     {
+       Console.WriteLine("---Starting PromptForGameType---"); 
+
         while (true)
         {
             Console.WriteLine(
