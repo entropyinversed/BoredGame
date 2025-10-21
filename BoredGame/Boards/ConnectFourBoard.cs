@@ -20,21 +20,7 @@ public class ConnectFourBoard : IBoard
 
     public void Display()
     {
-        Console.WriteLine();
-        Console.WriteLine("=========");
-        Console.WriteLine();
-
-        for (var row = 0; row < SquareBoardLength; row++)
-        {
-            for (var col = 0; col < SquareBoardLength; col++)
-            {
-                Console.Write($" {Cells[row, col]} ");
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
-        Console.WriteLine("=========");
-        Console.WriteLine();
+        BoardRenderer.Draw(Cells, SquareBoardLength);
     }
 
     public bool TryPlaceMark(int row, int col, char mark)
