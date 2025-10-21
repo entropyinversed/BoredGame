@@ -9,8 +9,6 @@ public class ConnectFourRules : IRules
     
     public void ApplyRules(IBoard board)
     {
-        Console.WriteLine("---Applying Rules ConnectFour---");
-
         if (board is not ConnectFourBoard connectFourBoard)
         {
             return;
@@ -49,8 +47,6 @@ public class ConnectFourRules : IRules
 
     public bool IsGameOver()
     {
-        Console.WriteLine("---Checking IsGameOver ConnectFour---");
-
         if (!_gameOver)
         {
             return false;

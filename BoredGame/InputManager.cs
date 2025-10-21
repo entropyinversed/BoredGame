@@ -6,8 +6,6 @@ public class InputManager
     
     public static PieceMove PlayTurn()
     {
-        Console.WriteLine("---Starting PlayTurn---");
-
         while (true)
         {
             var parts = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -18,15 +16,11 @@ public class InputManager
             {
                 return new PieceMove(row, col);
             }
-            
-            Console.WriteLine("Invalid move, please try again.");
         }
     }
     
     public static GameType PromptForGameType()
     {
-       Console.WriteLine("---Starting PromptForGameType---"); 
-
         while (true)
         {
             Console.WriteLine(
@@ -41,8 +35,6 @@ public class InputManager
             {
                 return gameType;
             }
-            
-            Console.WriteLine($"Sorry, \"{input}\" is not a valid game type.");
         }
     }
 }

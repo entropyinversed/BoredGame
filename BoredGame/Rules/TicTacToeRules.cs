@@ -7,16 +7,19 @@ public class TicTacToeRules : IRules
     private const char Empty = '_';
     private static readonly (int row, int col)[][] AllWinLines =
     [
-        [(0, 0), (0, 1), (0, 2)], // Row 0
-        [(1, 0), (1, 1), (1, 2)], // Row 1
-        [(2, 0), (2, 1), (2, 2)], // Row 2
+        // Row
+        [(0, 0), (0, 1), (0, 2)],
+        [(1, 0), (1, 1), (1, 2)],
+        [(2, 0), (2, 1), (2, 2)],
 
-        [(0, 0), (1, 0), (2, 0)], // Column 0
-        [(0, 1), (1, 1), (2, 1)], // Column 1
-        [(0, 2), (1, 2), (2, 2)], // Column 2
+        // Col
+        [(0, 0), (1, 0), (2, 0)],
+        [(0, 1), (1, 1), (2, 1)],
+        [(0, 2), (1, 2), (2, 2)],
 
-        [(0, 0), (1, 1), (2, 2)], // Diagonal ↘
-        [(0, 2), (1, 1), (2, 0)], // Diagonal ↙
+        // Dia
+        [(0, 0), (1, 1), (2, 2)],
+        [(0, 2), (1, 1), (2, 0)]
     ];
     
     private bool _gameOver;
@@ -24,8 +27,6 @@ public class TicTacToeRules : IRules
 
     public void ApplyRules(IBoard board)
     {
-        Console.WriteLine("---Applying Rules TicTacToeRules---");
-        
         if (board is not TicTacToeBoard ticTacToeBoard)
         {
             return;
@@ -56,8 +57,6 @@ public class TicTacToeRules : IRules
 
     public bool IsGameOver()
     {
-        Console.WriteLine("Checking IsGameOver TicTacToe");
-
         if (!_gameOver)
         {
             return false;
