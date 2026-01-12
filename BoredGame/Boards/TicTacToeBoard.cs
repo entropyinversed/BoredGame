@@ -1,3 +1,5 @@
+using BoredGame.UI;
+
 namespace BoredGame.Boards;
 
 public class TicTacToeBoard : IBoard
@@ -20,7 +22,7 @@ public class TicTacToeBoard : IBoard
 
     public void Display()
     {
-        BoardRenderer.Draw(Cells, SquareBoardLength);
+        BoardRenderer.DrawBoard(Cells, SquareBoardLength, SquareBoardLength);
     }
 
     public bool TryPlaceMark(int row, int col, char mark)

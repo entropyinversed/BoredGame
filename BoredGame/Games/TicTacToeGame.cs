@@ -1,5 +1,6 @@
 ﻿using BoredGame.Boards;
 using BoredGame.Rules;
+using BoredGame.UI;
 
 namespace BoredGame.Games;
 
@@ -16,7 +17,7 @@ public class TicTacToeGame(TicTacToeBoard board, TicTacToeRules rules) : IGame
 
     public void PlayTurn()
     {
-        var pieceRecord = InputManager.PlayTurn();
+        var pieceRecord = InputManager.GetMove();
 
         board.TryPlaceMark(pieceRecord.Row, pieceRecord.Col, _currentMark);
         rules.ApplyRules(board);

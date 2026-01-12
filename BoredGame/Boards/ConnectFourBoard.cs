@@ -1,17 +1,20 @@
+using BoredGame.UI;
+
 namespace BoredGame.Boards;
 
 public class ConnectFourBoard : IBoard
 {
-    private const byte SquareBoardLength = 4;
+    private const byte BoardColumnSize = 5;
+    private const byte BoardRowSize = 4;
     private const char Empty = '_';
     
-    public char[,] Cells { get; } = new char[SquareBoardLength, SquareBoardLength];
+    public char[,] Cells { get; } = new char[BoardRowSize, BoardColumnSize];
     
     public void Setup()
     {
-        for (var row = 0; row < SquareBoardLength; row++)
+        for (var row = 0; row < BoardRowSize; row++)
         {
-            for (var col = 0; col < SquareBoardLength; col++)
+            for (var col = 0; col < BoardColumnSize; col++)
             {
                 Cells[row, col] = Empty;
             }
@@ -20,12 +23,17 @@ public class ConnectFourBoard : IBoard
 
     public void Display()
     {
-        BoardRenderer.Draw(Cells, SquareBoardLength);
+        BoardRenderer.DrawBoard(Cells, BoardColumnSize, BoardRowSize);
     }
 
     public bool TryPlaceMark(int row, int col, char mark)
     {
-        if (row is < 0 or > 3 || col is < 0 or > 3)
+        if (row is < 0 or > (BoardRowSize - 1) || col is < 0 or > (BoardColumnSize - 1))
+        {
+            return false;
+        }
+
+        if (row != 0)
         {
             return false;
         }
@@ -34,8 +42,16 @@ public class ConnectFourBoard : IBoard
         {
             return false;
         }
-
-        Cells[row, col] = mark;
+        
+        // Gravity
+        for (var rowPosition = BoardRowSize - 1; rowPosition >= 0; rowPosition--)
+        {
+            if (Cells[rowPosition, col] == Empty)
+            {
+                Cells[rowPosition, col] = mark;
+                break;
+            }
+        }
 
         return true;
     }

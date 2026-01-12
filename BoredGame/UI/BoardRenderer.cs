@@ -1,21 +1,22 @@
-namespace BoredGame;
+namespace BoredGame.UI;
 
-public class BoardRenderer
+public static class BoardRenderer
 {
-    public static void Draw(char[,] cells, int squareBoardLength)
+    public static void DrawBoard(char[,] cells, byte boardColumnSize, byte boardRowSize)
     {
         Console.WriteLine();
         Console.WriteLine("=========");
         Console.WriteLine();
 
-        for (var row = 0; row < squareBoardLength; row++)
+        for (var row = 0; row < boardRowSize; row++)
         {
-            for (var col = 0; col < squareBoardLength; col++)
+            for (var col = 0; col < boardColumnSize; col++)
             {
                 Console.Write($" {cells[row, col]} ");
             }
             Console.WriteLine();
         }
+        
         Console.WriteLine();
         Console.WriteLine("=========");
         Console.WriteLine();

@@ -1,10 +1,10 @@
-namespace BoredGame;
+namespace BoredGame.UI;
 
-public class InputManager
+public static class InputManager
 {
     public record PieceMove(int Row, int Col);
     
-    public static PieceMove PlayTurn()
+    public static PieceMove GetMove()
     {
         while (true)
         {
