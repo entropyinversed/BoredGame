@@ -4,85 +4,103 @@ class Program
 {
     static void Main(string[] args)
     {
-       
-	// Just to test git creds
-
-	const char EMPTY = '_';
+        ////
+        //// Setup generic-ish variables
+        ////
+        const char ZERO = '0';
+        const char CROSS = 'X';
+        const char EMPTY = '_';
+        var userGameSelection = "Not Selected";
+        var gameBoard = new char[3, 3];
+        var completionStateReached = false;
         
-        // Plan for Tic Tac Toe
-        var board = new char[3, 3];
-        ////// fill it in
-        //// run into issue of how to encode rules
         
-        // Greet user with game name and choice view
+        ////
+        //// Gather direction flow should go
+        ////
         Console.WriteLine("Welcome to BoredGame!");
         Console.WriteLine("Please choose what to play:");
         Console.WriteLine("[Tic Tac Toe]");
-        Console.WriteLine("[Not Yet Add]");
-        
-        
-        // Prompt user to choose game
-        // Validate user input AND GOTO Prompt user to choose game if necassary (is the game choice valid?)
-        var userGameSelection = "";
-        userGameSelection = "Tic Tac Toe"; // for debugging
+        Console.WriteLine("[Toe Tac Tic]");
 
-        while (userGameSelection != "Tic Tac Toe")
+        while (userGameSelection != "Tic Tac Toe" || userGameSelection != "Toe Tac Tic")
         {
             userGameSelection = Console.ReadLine();
 
-            if (userGameSelection == "Tic Tac Toe")
+            if (userGameSelection == "Tic Tac Toe" || userGameSelection == "Toe Tac Tic")
             {
                 break;
             }
             
             Console.WriteLine("Please choose a valid game");
         }
-
-        // Console.WriteLine($"board.GetLength(0) = {board.GetLength(0)}"); // for debugging
-        // Console.WriteLine($"board.GetLength(1) = {board.GetLength(1)}"); // for debugging
-
-        // Load / Initialize game
-        for (var row = 0; row < board.GetLength(0); row++)
+        
+        
+        ////
+        //// Initialize specific starting state
+        ////
+        if (userGameSelection == "Tic Tac Toe")
         {
-            for (var col = 0; col < board.GetLength(1); col++)
+            for (var row = 0; row < gameBoard.GetLength(0); row++)
             {
-                board[row, col] = EMPTY;
-                // Console.WriteLine($"row = {row}; col = {col}; board = {board[row, col]}"); // for debugging
+                for (var col = 0; col < gameBoard.GetLength(1); col++)
+                {
+                    gameBoard[row, col] = EMPTY;
+                }
             }
         }
-
-        // Draw initial game board state to screen (what an absolute disaster... but it works)
-        for (var row = -1; row < board.GetLength(0); row++)
+        
+        if (userGameSelection == "Toe Tac Tic")
         {
-            // Hack to get column numbers drawn first above and offset
-            if (row == -1)
+            for (var row = 0; row < gameBoard.GetLength(0); row++)
+            {
+                for (var col = 0; col < gameBoard.GetLength(1); col++)
+                {
+                    gameBoard[row, col] = CROSS; // FIX: Fill board with a random (but equal) combination of Zeros and Crosses
+                }
+            }
+        }
+        
+
+        ////
+        //// Display board state to the user
+        ////
+        Draw_Board:
+        for (var row = -1; row < gameBoard.GetLength(0); row++)
+        {
+            if (row == -1) // FIX: Hack to get column numbers drawn first above and offset
             {
                 Console.Write("   ");
-                for (var col = 0; col < board.GetLength(1); col++)
+                for (var col = 0; col < gameBoard.GetLength(1); col++)
                 {
                     Console.Write($" {col} ");        
                 }
                 Console.WriteLine();
                 row++;
             }
-            
             Console.Write($" {row} ");
-            for (var col = 0; col < board.GetLength(1); col++)
+            for (var col = 0; col < gameBoard.GetLength(1); col++)
             {
-                Console.Write($" {board[row, col]} ");   
+                Console.Write($" {gameBoard[row, col]} ");   
             }
             Console.WriteLine();
         }
         Console.WriteLine();
+        if (completionStateReached)
+        {
+            return;
+        }
 
         
-        // Prompt user for move input and validate
+        ////
+        //// Get and validate state update data from user
+        ////
         TryAgain:
         Console.WriteLine("Please Select a move to play as zeros"); // needs fixing obviously...
 
-        // Get row and make sure int can be pulled from it
+        // 0A - Get row and make sure int can be pulled from it
         string userRowSelection;
-        int userRowSelectionInt = -1; // hacky, something about might not be init later on...
+        int userRowSelectionInt = -1;
         bool isUserRowSelectionValid = false;
 
         Console.Write("Row: ");
@@ -99,7 +117,7 @@ class Program
             Console.WriteLine("Please enter a valid row number.");
         }
         
-        // Get col and make sure int can be pulled from it
+        // 0B - Get col and make sure int can be pulled from it
         string userColSelection;
         int userColSelectionInt = -1; // hacky, something about might not be init later on...
         bool isUserColSelectionValid = false;
@@ -117,65 +135,43 @@ class Program
 
             Console.WriteLine("Please enter a valid col number.");
         }
-
-        // Console.WriteLine($"userRowSelectionInt {userRowSelectionInt}"); // for debugging
-        // Console.WriteLine($"userColSelectionInt {userColSelectionInt}"); // for debugging
-
-        // - 1. Make sure it is on the board
+        
+        // 1 - Make sure it is on the board
         if (userRowSelectionInt > 2 || userRowSelectionInt < 0 || userColSelectionInt > 2 || userColSelectionInt < 0)
         {
             Console.WriteLine("Please ensure your selection is on the board");
             goto TryAgain;
         }
         
-        // - 2. Make sure position is empty
-        if (board[userRowSelectionInt, userColSelectionInt] != EMPTY)
+        // 2 - Make sure position is empty FIX: this only works for tic tac toe....
+        if (gameBoard[userRowSelectionInt, userColSelectionInt] != EMPTY)
         {
             Console.WriteLine("Please do not place your piece on another!");
             goto TryAgain;
         }
 
 
-        // Set new state of board (update positions, check if any completion state is hit)
-        // Place the user's move
-        board[userRowSelectionInt, userColSelectionInt] = '0';
+        ////
+        //// Update the state of the board
+        ////
+        gameBoard[userRowSelectionInt, userColSelectionInt] = '0'; // FIX: This fails for Tic Tac Toe and Tac Tic Toe
         
-        // Do some magic to check if completion state is hit
-        Console.WriteLine("Somehow, you won!");
-
-        // Draw new game board state to screen AND if compeltion status is true Greet user about completion state
-        // Draw initial game board state to screen (what an absolute disaster... but it works)
-        for (var row = -1; row < board.GetLength(0); row++)
-        {
-            // Hack to get column numbers drawn first above and offset
-            if (row == -1)
-            {
-                Console.Write("   ");
-                for (var col = 0; col < board.GetLength(1); col++)
-                {
-                    Console.Write($" {col} ");        
-                }
-                Console.WriteLine();
-                row++;
-            }
             
-            Console.Write($" {row} ");
-            for (var col = 0; col < board.GetLength(1); col++)
-            {
-                Console.Write($" {board[row, col]} ");   
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
+        ////
+        //// Verify is any end state has been reached
+        ////
+        Console.WriteLine("Somehow, you won!"); // FIX: Obviously
+        completionStateReached = true;
+        goto Draw_Board;
         
-        // GOTO: Prompt user for move input OR Exit
+        
+        
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
         
-        //-------------------------
-        //-------------------------
-        //-------------------------
-
-
         // Things that don't fit neatly:
         // TUI to display data nicely and allow easy choice
         // Algorithm to work out completion states
