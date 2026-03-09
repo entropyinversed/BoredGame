@@ -296,7 +296,7 @@ internal static class Program
     }
 
     
-    private static bool IsGameComplete(char[,] gameBoard, char empty) //FIX: This should actually do something LMAO
+    private static bool IsGameComplete(char[,] gameBoard, char empty)
     {
         if (IsBoardFull(gameBoard, empty))
         {

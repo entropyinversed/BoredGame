@@ -1,9 +1,12 @@
 #include <Windows.h>
 
-static void foo()
+struct projectile
 {
-	OutputDebugStringA("Hello, World!\n");
-}
+	char unsigned IsThisOnFire;
+	int Damage;
+	int ParticlePerSecond;
+	int HowManyCooks;
+};
 
 int WINAPI WinMain
 (
@@ -13,10 +16,16 @@ int WINAPI WinMain
 	_In_ int nCmdShow
 )
 {
-	char unsigned Test;
+	projectile Test{};
 
-	Test = 255;
-	Test = Test + 2;
+	int Size = sizeof(Test);
 
-	foo();
+	Test.IsThisOnFire = 1;
+	Test.Damage = 1;
+	Test.ParticlePerSecond = 1;
+	Test.HowManyCooks = 1;
+
+	int InttedAddress = int(& Test);
+	projectile* ProjectilePointer = &Test;
+	short *MrPointer = (short *) & Test; //??????????
 }

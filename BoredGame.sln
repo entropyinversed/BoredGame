@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGame", "BoredGame\BoredGame.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoredGameO", "BoredGameO\BoredGameO.csproj", "{008C8997-B585-4B7D-B6CD-3F42BF2C4490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReIdea", "ReIdea\ReIdea.csproj", "{62FE7C74-26B3-4C74-98E1-AFCD6E742A2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoredGameS", "BoredGameS\BoredGameS.csproj", "{62FE7C74-26B3-4C74-98E1-AFCD6E742A2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokeNativeTest", "InvokeNativeTest\InvokeNativeTest.csproj", "{B688F10C-D23E-46D3-A897-894EFDD0F41D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{62FE7C74-26B3-4C74-98E1-AFCD6E742A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62FE7C74-26B3-4C74-98E1-AFCD6E742A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62FE7C74-26B3-4C74-98E1-AFCD6E742A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B688F10C-D23E-46D3-A897-894EFDD0F41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B688F10C-D23E-46D3-A897-894EFDD0F41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B688F10C-D23E-46D3-A897-894EFDD0F41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B688F10C-D23E-46D3-A897-894EFDD0F41D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
