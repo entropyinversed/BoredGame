@@ -27,5 +27,5 @@ int WINAPI WinMain
 
 	int InttedAddress = int(& Test);
 	projectile* ProjectilePointer = &Test;
-	short *MrPointer = (short *) & Test; //??????????
+	short *MrPointer = (short *) & Test;
 }
