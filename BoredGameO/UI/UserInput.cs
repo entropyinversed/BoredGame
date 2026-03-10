@@ -1,6 +1,6 @@
 namespace BoredGame.UI;
 
-public static class InputManager
+public static class UserInput
 {
     public record PieceMove(int Row, int Col);
     

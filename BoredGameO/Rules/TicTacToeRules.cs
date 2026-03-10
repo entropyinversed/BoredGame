@@ -2,7 +2,7 @@ using BoredGame.Boards;
 
 namespace BoredGame.Rules;
 
-public class TicTacToeRules : IRules
+public class TicTacToeRules
 {
     private const char Empty = '_';
     private static readonly (int row, int col)[][] AllWinLines =
@@ -24,14 +24,25 @@ public class TicTacToeRules : IRules
     
     private bool _gameOver;
     private char? _winner;
-
-    public void ApplyRules(IBoard board)
+    
+    public bool TryPlaceMark(int row, int col, char mark)
     {
-        if (board is not TicTacToeBoard ticTacToeBoard)
+        if (row is < 0 or > (SquareBoardLength - 1) || col is < 0 or > (SquareBoardLength - 1))
         {
-            return;
+            return false;
+        }
+
+        if (Cells[row, col] is not Empty)
+        {
+            return false;
         }
         
+        Cells[row, col] = mark;
+        return true;
+    }
+
+    public void ApplyRules(TicTacToeBoard board)
+    {
         var boardCells = ticTacToeBoard.Cells;
         
         foreach (var line in AllWinLines)
@@ -53,20 +64,5 @@ public class TicTacToeRules : IRules
             return;
         }
         _gameOver = ticTacToeBoard.IsFull();
-    }
-
-    public bool IsGameOver()
-    {
-        if (!_gameOver)
-        {
-            return false;
-        }
-        
-        var resultMessage = _winner == null ? 
-            "It's a tie" : $"Player {_winner} won!";
-
-        Console.WriteLine(resultMessage);
-        
-        return true;
     }
 }

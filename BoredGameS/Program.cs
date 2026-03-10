@@ -4,8 +4,7 @@ internal static class Program
 {
     private enum SupportedGames
     {
-        TicTacToe,
-        ToeTacTic
+        TicTacToe
     }
 
     private enum BoardStates
@@ -94,11 +93,10 @@ internal static class Program
         Console.WriteLine("Welcome to BoredGame!!!");
         Console.WriteLine("Please choose what to play:");
         Console.WriteLine("[Tic Tac Toe]");
-        Console.WriteLine("[Toe Tac Tic]");
         
         var userGameSelection = "Not Selected";
 
-        while (userGameSelection != "Tic Tac Toe" && userGameSelection != "Toe Tac Tic")
+        while (userGameSelection != "Tic Tac Toe")
         {
             userGameSelection = Console.ReadLine();
             Console.WriteLine("Please choose a valid game");
@@ -109,10 +107,6 @@ internal static class Program
             case "Tic Tac Toe":
             {
                 return SupportedGames.TicTacToe;
-            }
-            case "Toe Tac Tic":
-            {
-                return SupportedGames.ToeTacTic;
             }
             default:
             {
@@ -137,30 +131,11 @@ internal static class Program
                 }
                 break;
             }
-            case SupportedGames.ToeTacTic:
-            {
-                for (var row = 0; row < gameBoard.GetLength(0); row++)
-                {
-                    for (var col = 0; col < gameBoard.GetLength(1); col++) // FIX: Make this more fair
-                    {
-                        var random = new Random();
-                        if (random.NextDouble() > 0.5)
-                        {
-                            gameBoard[row, col] = zero;
-                        }
-                        else
-                        {
-                            gameBoard[row, col] = cross;
-                        }
-                    }
-                }
-                break;
-            }
         }
     }
 
     
-    private static void DrawBoard(char[,] gameBoard) // FIX: Hacky to get column numbers drawn first above and offset
+    private static void DrawBoard(char[,] gameBoard)
     {
         for (var row = -1; row < gameBoard.GetLength(0); row++)
         {
