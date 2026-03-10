@@ -49,23 +49,18 @@ internal static class Program
         var whosTurnIsIt = zero; // FIX: Should have states defined, maybe enum
         var gameBoard = new char[3, 3];
         
-        
         //// Get info to decide what game to have as starting state
         var validatedUserGameSelection = GetUserGameSelection();
-        
         
         //// Initialize specific game starting state
         SetupBoardStart(validatedUserGameSelection, gameBoard, empty, zero, cross);
         
-        
         //// Display board state to the user
         Draw_Board:
         DrawBoard(gameBoard);
-
         
         //// Get and validate state update data from user
         MoveData validatedMoveData = GetAndValidateMoveRequest(whosTurnIsIt, empty, gameBoard);
-        
         
         //// Update the state of the board
         if (whosTurnIsIt == zero)
@@ -78,7 +73,6 @@ internal static class Program
             gameBoard[validatedMoveData.Row, validatedMoveData.Col] = cross;
             whosTurnIsIt = zero;
         }
-
         
         //// Verify is any end state has been reached
         if (IsGameComplete(gameBoard, empty))
@@ -92,9 +86,7 @@ internal static class Program
     }
     
     
-    // ----------------------------------------------------------------------------------------------------------------------------------------------
-    // ----------------------------------------------------------------------------------------------------------------------------------------------
-    // ----------------------------------------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------
     
     
     private static SupportedGames GetUserGameSelection() // FIX: There's gotta be a better way
@@ -309,10 +301,12 @@ internal static class Program
             var whoWon = WhoWonTheGame(gameBoard, empty);
             if (whoWon == empty)
             {
+                DrawBoard(gameBoard);
                 return false;
             }
             else
             {
+                DrawBoard(gameBoard);
                 Console.WriteLine($"The player that one was: {whoWon} !");
                 return true;
             }
